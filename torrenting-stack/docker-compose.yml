@@ -1,0 +1,50 @@
+services:
+    # VPN Client
+    gluetun:
+        image: qmcgaw/gluetun
+        cap_add:
+            - NET_ADMIN
+        devices:
+            - /dev/net/tun:/dev/net/tun
+        environment:
+            - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
+            - VPN_TYPE=wireguard
+            - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+            - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+            - SERVER_COUNTRIES=${SERVER_COUNTRIES}
+            - PORT_FORWARD_ONLY=on
+            - VPN_PORT_FORWARDING=on
+            - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- --retry-connrefused --post-data "json={\"listen_port\":{{PORTS}}}" http://127.0.0.1:8081/api/v2/app/setPreferences 2>&1'
+        ports:
+            - 5800:5800
+            - 8081:8081
+        restart: unless-stopped
+        volumes:
+            - ./gluetun/config:/gluetun
+
+    # Web browser under the VPN
+    firefox:
+        image: jlesage/firefox
+        volumes:
+            - "./firefox:/config:rw"
+        network_mode: "service:gluetun"
+        restart: unless-stopped
+
+    # Torrent Client
+    qbittorrent:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Australia/Melbourne
+            - WEBUI_PORT=8081
+        volumes:
+            - ./qbittorrent/appdata:/config
+            - /media/moo/bighdd/qbittorrent-output:/downloads
+            - ./firefox/downloads:/new-torrents
+        network_mode: "service:gluetun"
+        depends_on:
+            gluetun:
+                condition: service_healthy
+        restart: unless-stopped

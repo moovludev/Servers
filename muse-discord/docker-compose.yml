@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  muse:
+    # image: ghcr.io/museofficial/muse:2.11.1
+    # image: ghcr.io/museofficial/muse:pr-1256
+    # image: dovah/muse:latest
+    image: ghcr.io/museofficial/muse:pr-1284
+    restart: always
+    volumes:
+      - ./data:/data
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}

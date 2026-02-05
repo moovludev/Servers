@@ -1,0 +1,36 @@
+# Docker
+**/data/
+**/cache/
+**/volumes/
+**/backups/
+**/backup/
+**/db/
+**/Media/
+**/jellyfin/config/
+**/satisfactory-server/
+**/syncthing/config/
+**/deepbooru/
+**/tailscale-nginx/state
+**/torrenting-stack/firefox
+**/torrenting-stack/gluetun
+**/torrenting-stack/qbittorrent
+
+# Databases
+**/postgres/
+**/sql/
+
+# Secrets
+*.env
+*.env.local
+
+# IDE / OS
+.idea/
+*.iml
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Node / JS
+node_modules/
+pnpm-lock.yaml

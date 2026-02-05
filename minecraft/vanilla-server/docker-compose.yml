@@ -1,0 +1,23 @@
+services:
+    minecraft:
+        image: marctv/minecraft-papermc-server:1.21.10
+        restart: always
+        container_name: mcserver
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - MEMORYSIZE=6G
+            - PAPERMC_FLAGS=--nojline
+            - TZ=Australia/Melbourne
+        volumes:
+            - ./data:/data
+            - /home/moo/Desktop/Servers/Minecraft/backups:/backups
+        ports:
+            - "25565:25565" # Main port
+            - "19132:19132" # Geyser port
+            - "24454:24454" # VOIP Simple voice chat
+            - "8804:8804" # Plan
+            - "8100:8100" # Bluemap
+        # The following allow `docker attach minecraft` to work
+        stdin_open: true
+        tty: true

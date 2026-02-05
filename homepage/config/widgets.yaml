@@ -1,0 +1,34 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- resources:
+    label: System
+    cpu: true
+    memory: true
+    cputemp: true
+    uptime: true
+    units: metric
+    refresh: 3000 # optional, in ms
+    diskUnits: bytes # optional, bytes (default) or bbytes. Only applies to disk
+    network: true # optional, uses 'default' if true or specify a network interface name
+
+- resources:
+    label: Main SSD
+    expanded: true
+    disk: /
+
+- resources:
+    label: Neptune Mirror
+    expanded: true
+    disk: /neptune
+
+- resources:
+    label: Big HDD
+    expanded: true
+    disk: /bighdd
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
