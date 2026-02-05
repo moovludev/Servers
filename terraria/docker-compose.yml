@@ -1,0 +1,11 @@
+services:
+  terraria:
+    image: ryshe/terraria
+    container_name: terraria
+    environment:
+      - WORLD_FILENAME=poop.wld
+    ports:
+      - "7777:7777"
+    volumes:
+      - ./data:/root/.local/share/Terraria/Worlds
+    restart: always

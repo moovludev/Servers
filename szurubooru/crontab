@@ -1,0 +1,2 @@
+0 0 * * * flock -n /tmp/szuru-toolkit.lock -c "cd /szurubooru-toolkit && uv run szuru-toolkit auto-tagger -- \"sort:date,asc tagme\""
+0 1 * * * flock -n /tmp/szuru-toolkit-upload.lock -c "cd /szurubooru-toolkit && bash upload-script.sh >> /szurubooru-toolkit/logs/upload.log 2>&1"

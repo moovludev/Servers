@@ -1,0 +1,99 @@
+[globals]
+url = "http://172.17.0.1:8080"
+username = "szurubooru-toolkit"
+api_token = "4edfd74f-3d6d-4421-af36-807478d0aeb6"
+public = false
+hide_progress = false
+
+[credentials]
+[credentials.pixiv]
+token = "None"
+[credentials.sankaku]
+username = ""
+password = ""
+
+[logging]
+log_enabled = true
+log_file = "szurubooru_toolkit.log"
+log_level = "WARNING"
+log_colorized = true
+
+[auto_tagger]
+saucenao_api_token = "1ccdcd858e78c3bb2c0ec149ace7f05f559cc87e"
+saucenao = false
+md5_search = false
+deepbooru = true
+deepbooru_model = "./misc/deepbooru/model-resnet_custom_v3.h5"
+deepbooru_threshold = 0.5
+deepbooru_forced = true
+deepbooru_set_tag = true
+default_safety = "unsafe"
+use_pixiv_artist = false
+use_pixiv_tags = false
+update_relations = true
+hide_progress = false
+limit = 0
+
+[create_relations]
+threshold = 3
+hide_progress = false
+
+[create_tags]
+limit = 100
+min_post_count = 10
+query = '*'
+overwrite = false
+hide_progress = false
+
+[delete_posts]
+hide_progress = false
+
+[import_from_booru]
+deepbooru = true
+max_similarity = "0.95"
+convert_to_jpg = false
+convert_threshold = "3MB"
+convert_quality = 90
+shrink = false
+shrink_threshold = 6000000
+shrink_dimensions = "2500x2500"
+default_safety = "safe"
+hide_progress = false
+
+[import_from_url]
+deepbooru = false
+tmp_path = './tmp/gallery_dl'
+use_twitter_artist = false
+max_similarity = "0.95"
+convert_to_jpg = false
+convert_threshold = "3MB"
+convert_quality = 90
+shrink = false
+shrink_threshold = 6000000
+shrink_dimensions = "2500x2500"
+default_safety = "safe"
+update_tags_if_exists = false
+hide_progress = false
+
+[reset_posts]
+hide_progress = false
+
+[tag_posts]
+update_implications = false
+mode = 'append'
+hide_progress = false
+
+[upload_media]
+src_path = "/szurubooru-toolkit/upload_src"
+cleanup = false
+tags = ["tagme"]
+auto_tag = true
+max_similarity = "0.95"
+convert_to_jpg = false
+convert_threshold = "3MB"
+convert_quality = 90
+shrink = false
+shrink_threshold = 6000000
+shrink_dimensions = "2500x2500"
+default_safety = "safe"
+hide_progress = false

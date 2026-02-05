@@ -1,0 +1,31 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    user: 1000:1000
+    network_mode: 'host'
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - type: bind
+        source: '/media/moo/neptune/server-data'
+        target: /mediahdd
+      - type: bind
+        source: '/media/moo/neptune/server-data/SMB Shared Drive'
+        target: /SMBShared
+      - type: bind
+        source: '/media/moo/neptune/server-data/syncthing/music'
+        target: /music
+        read_only: true
+      - type: bind
+        source: '/media/moo/bighdd/jellyfin'
+        target: /mediabighdd
+    restart: 'unless-stopped'
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

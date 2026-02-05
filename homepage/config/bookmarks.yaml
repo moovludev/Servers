@@ -1,0 +1,16 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Local Links:
+  - Immich Local:
+    - abbr: IM
+      href: http://192.168.20.30:2283/
+  - Navidrome Local:
+    - abbr: ND
+      href: http://192.168.20.30:4533/
+
+- Tools:
+  - Cloudflare:
+    - abbr: CF
+      href: https://www.cloudflare.com/

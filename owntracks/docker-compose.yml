@@ -1,0 +1,24 @@
+services:
+    otrecorder:
+        container_name: otrecorder
+        image: owntracks/recorder
+        environment:
+            - OTR_PORT=0  # disables MQTT
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./volumes/owntracks-recorder/config:/config
+            - ./volumes/owntracks-recorder/store:/store
+        ports:
+            - 8083:8083
+        restart: unless-stopped
+    
+    owntracks-frontend:
+        image: owntracks/frontend
+        ports:
+            - 8090:80
+        volumes:
+            - ./config.js:/usr/share/nginx/html/config/config.js
+        environment:
+            - SERVER_HOST=otrecorder
+            - SERVER_PORT=8083
+        restart: unless-stopped
