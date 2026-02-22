@@ -1,0 +1,162 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Private Services:
+    - Szurubooru:
+        icon: /icons/szurubooru.jpg
+        href: http://192.168.20.30:8080
+        siteMonitor: http://192.168.20.30:8080
+        description: Image booru
+        server: local-docker
+        container: szurubooru-server-1
+    - Ganymede:
+        icon: /icons/ganymede.png
+        href: http://192.168.20.30:4800
+        siteMonitor: http://192.168.20.30:4800
+        description: Twitch stream archive server
+        server: local-docker
+        container: ganymede
+    - Jellyfin:
+        icon: jellyfin.png
+        href: http://192.168.20.30:8096
+        description: Media server
+        siteMonitor: http://192.168.20.30:8096
+        widget:
+            type: jellyfin
+            url: http://192.168.20.30:8096
+            key: {{HOMEPAGE_VAR_JELLYFIN_API}}
+            enableBlocks: true # optional, defaults to false
+            enableNowPlaying: true # optional, defaults to true
+            enableUser: true # optional, defaults to false
+            enableMediaControl: false # optional, defaults to true
+            showEpisodeNumber: true # optional, defaults to false
+            expandOneStreamToTwoRows: false # optional, defaults to true
+        server: local-docker
+        container: jellyfin
+    - Gluetun:
+        icon: gluetun.png
+        description: VPN interface
+        server: local-docker
+        container: torrenting-stack-gluetun-1
+    - Firefox:
+        icon: firefox.png
+        description: Web browser
+        href: http://192.168.20.30:5800
+        siteMonitor: http://192.168.20.30:5800
+        server: local-docker
+        container: torrenting-stack-firefox-1
+    - qbittorrent:
+        icon: qbittorrent.png
+        description: Torrent client
+        href: http://192.168.20.30:8081
+        siteMonitor: http://192.168.20.30:8081
+        server: local-docker
+        container: qbittorrent
+        widget:
+            type: qbittorrent
+            url: http://192.168.20.30:8081
+            username: {{HOMEPAGE_VAR_NAVIDROME_USER}}
+            password: {{HOMEPAGE_VAR_NAVIDROME_PASSWORD}}
+            enableLeechProgress: true # optional, defaults to false
+            enableLeechSize: true # optional, defaults to false
+    - syncthing:
+        icon: syncthing.png
+        description: File Syncing Tool
+        href: http://192.168.20.30:8384
+        siteMonitor: http://192.168.20.30:8384
+        server: local-docker
+        container: syncthing
+
+- Public Services:
+    - Immich:
+        icon: immich.png
+        href: {{HOMEPAGE_VAR_IMMICH_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_IMMICH_PUBLIC}}
+        description: Photo Server
+        widget:
+            type: immich
+            url: http://192.168.20.30:2283
+            key: {{HOMEPAGE_VAR_IMMICH_API}}
+            version: 2 # optional, default is 1
+        server: local-docker
+        container: immich_server
+    - Muse:
+        icon: /icons/muse.png
+        description: Discord music bot
+        server: local-docker
+        container: muse-discord-muse-1
+    - Foundry:
+        icon: /icons/foundry.png
+        href: {{HOMEPAGE_VAR_FOUNDRY_PUBLIC}}
+        description: Online D&D game server
+        server: local-docker
+        container: aaron-foundry-foundry-1
+        siteMonitor: {{HOMEPAGE_VAR_FOUNDRY_PUBLIC}}
+    - Navidrome:
+        icon: navidrome.png
+        href: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
+        description: Music server
+        server: local-docker
+        container: navidrome-navidrome-1
+        siteMonitor: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
+        widget:
+            widget:
+            type: navidrome
+            url: http://192.168.20.30:4533
+            user: {{HOMEPAGE_VAR_NAVIDROME_USER}}
+            token: {{HOMEPAGE_VAR_NAVIDROME_PASSWORD}}
+            salt: {{HOMEPAGE_VAR_NAVIDROME_SALT}}
+    - Owntracks:
+        icon: owntracks.png
+        href: {{HOMEPAGE_VAR_OWNTRACKS_PUBLIC}}
+        description: Geo location tracker
+        server: local-docker
+        container: owntracks
+        siteMonitor: {{HOMEPAGE_VAR_OWNTRACKS_PUBLIC}}
+    - TailScale:
+        icon: tailscale.png
+        description: Tailscale VPN
+        server: local-docker
+        container: tailscale-nginx-1
+        widget:
+            type: tailscale
+            deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
+            key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+- Game Servers:
+    - Minecraft Vanilla:
+        icon: minecraft.png
+        description: Moocraft server from 2022
+        widget:
+            type: minecraft
+            url: udp://192.168.20.30:25565
+        server: local-docker
+        container: mcserver
+    - Minecraft Bluemap:
+        icon: /icons/bluemap.png
+        description: Interactive map for vanilla Minecraft server
+        href: {{HOMEPAGE_VAR_BLUEMAP_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_BLUEMAP_PUBLIC}}
+        server: local-docker
+        container: mcserver
+    - Minecraft Plan:
+        icon: /icons/plan.png
+        description: Player statistics for vanilla Minecraft server
+        href: {{HOMEPAGE_VAR_PLAN_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_PLAN_PUBLIC}}
+        server: local-docker
+        container: mcserver
+    - Minecraft Secondary:
+        icon: minecraft.png
+        description: Current secondary Minecraft server
+        widget:
+            type: minecraft
+            url: udp://192.168.20.30:46552
+    - Terraria:
+        icon: terraria.png
+        description: 2025 Terraria server
+        server: local-docker
+        container: terraria
+
+# Future add: nginx, samba
