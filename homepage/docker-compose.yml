@@ -15,6 +15,8 @@ services:
       - /media/moo/bighdd:/bighdd:ro
       - /media/moo/neptune/server-data:/neptune:ro
     restart: unless-stopped
+    env_file:
+      - .env
 
   # Docker proxy to get status on containers
   dockerproxy:
