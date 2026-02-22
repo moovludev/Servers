@@ -25,7 +25,7 @@
         widget:
             type: jellyfin
             url: http://192.168.20.30:8096
-            key: b9d6ef5ae91b4327b99e14aa0803c198
+            key: {{HOMEPAGE_VAR_JELLYFIN_API}}
             enableBlocks: true # optional, defaults to false
             enableNowPlaying: true # optional, defaults to true
             enableUser: true # optional, defaults to false
@@ -56,8 +56,8 @@
         widget:
             type: qbittorrent
             url: http://192.168.20.30:8081
-            username: admin
-            password: Epicmoo99
+            username: {{HOMEPAGE_VAR_NAVIDROME_USER}}
+            password: {{HOMEPAGE_VAR_NAVIDROME_PASSWORD}}
             enableLeechProgress: true # optional, defaults to false
             enableLeechSize: true # optional, defaults to false
     - syncthing:
@@ -71,13 +71,13 @@
 - Public Services:
     - Immich:
         icon: immich.png
-        href: https://photos.oppai.win
-        siteMonitor: https://photos.oppai.win
+        href: {{HOMEPAGE_VAR_IMMICH_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_IMMICH_PUBLIC}}
         description: Photo Server
         widget:
             type: immich
             url: http://192.168.20.30:2283
-            key: INYoKRIilC4U9fdgwQ97q46fWadLMspd0yE5NTIpIlk
+            key: {{HOMEPAGE_VAR_IMMICH_API}}
             version: 2 # optional, default is 1
         server: local-docker
         container: immich_server
@@ -88,26 +88,41 @@
         container: muse-discord-muse-1
     - Foundry:
         icon: /icons/foundry.png
-        href: https://dnd.oppai.win
+        href: {{HOMEPAGE_VAR_FOUNDRY_PUBLIC}}
         description: Online D&D game server
         server: local-docker
         container: aaron-foundry-foundry-1
-        siteMonitor: https://dnd.oppai.win
-    - OwnTracks:
+        siteMonitor: {{HOMEPAGE_VAR_FOUNDRY_PUBLIC}}
     - Navidrome:
         icon: navidrome.png
-        href: https://music.oppai.win
+        href: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
         description: Music server
         server: local-docker
         container: navidrome-navidrome-1
-        siteMonitor: https://music.oppai.win
+        siteMonitor: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
         widget:
             widget:
             type: navidrome
             url: http://192.168.20.30:4533
-            user: admin
-            token: 797ec5f4120c4eaef5a433ab55fa4125
-            salt: c19b2d
+            user: {{HOMEPAGE_VAR_NAVIDROME_USER}}
+            token: {{HOMEPAGE_VAR_NAVIDROME_PASSWORD}}
+            salt: {{HOMEPAGE_VAR_NAVIDROME_SALT}}
+    - Owntracks:
+        icon: owntracks.png
+        href: {{HOMEPAGE_VAR_OWNTRACKS_PUBLIC}}
+        description: Geo location tracker
+        server: local-docker
+        container: owntracks
+        siteMonitor: {{HOMEPAGE_VAR_OWNTRACKS_PUBLIC}}
+    - TailScale:
+        icon: tailscale.png
+        description: Tailscale VPN
+        server: local-docker
+        container: tailscale-nginx-1
+        widget:
+            type: tailscale
+            deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
+            key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
 
 - Game Servers:
     - Minecraft Vanilla:
@@ -115,34 +130,33 @@
         description: Moocraft server from 2022
         widget:
             type: minecraft
-            url: udp://oppai.win
+            url: udp://192.168.20.30:25565
         server: local-docker
         container: mcserver
     - Minecraft Bluemap:
         icon: /icons/bluemap.png
         description: Interactive map for vanilla Minecraft server
-        href: https://map.oppai.win
-        siteMonitor: https://map.oppai.win
+        href: {{HOMEPAGE_VAR_BLUEMAP_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_BLUEMAP_PUBLIC}}
         server: local-docker
         container: mcserver
     - Minecraft Plan:
         icon: /icons/plan.png
         description: Player statistics for vanilla Minecraft server
-        href: https://info.oppai.win
-        siteMonitor: https://info.oppai.win
+        href: {{HOMEPAGE_VAR_PLAN_PUBLIC}}
+        siteMonitor: {{HOMEPAGE_VAR_PLAN_PUBLIC}}
         server: local-docker
         container: mcserver
-    - Minecraft Modded:
+    - Minecraft Secondary:
         icon: minecraft.png
-        description: Persistent modded server from 2025
+        description: Current secondary Minecraft server
         widget:
             type: minecraft
-            url: udp://modded.oppai.win
+            url: udp://192.168.20.30:46552
     - Terraria:
         icon: terraria.png
         description: 2025 Terraria server
         server: local-docker
         container: terraria
 
-# To add: Torrenting firefox, torrenting qbittorrent, misskey
-# Future add: nginx, samba, minecraft, minecraft modded, syncthing
+# Future add: nginx, samba
