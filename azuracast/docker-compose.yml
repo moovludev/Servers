@@ -1,0 +1,45 @@
+name: azuracast
+services:
+    web:
+        container_name: azuracast
+        image: 'ghcr.io/azuracast/azuracast:${AZURACAST_VERSION:-latest}'
+        labels:
+            - com.centurylinklabs.watchtower.scope=azuracast
+        ports:
+            - '${AZURACAST_HTTP_PORT:-80}:${AZURACAST_HTTP_PORT:-80}'
+            - '${AZURACAST_HTTPS_PORT:-443}:${AZURACAST_HTTPS_PORT:-443}'
+            - '${AZURACAST_SFTP_PORT:-2022}:${AZURACAST_SFTP_PORT:-2022}'
+        env_file:
+            - azuracast.env
+            - .env
+        volumes:
+            - '/media/moo/bighdd/azuracast/stations:/var/azuracast/stations'
+            - '/media/moo/bighdd/azuracast/backups:/var/azuracast/backups'
+            - '/media/moo/bighdd/azuracast/db:/var/lib/mysql'
+            - '/media/moo/bighdd/azuracast/uploads:/var/azuracast/storage/uploads'
+            - '/media/moo/bighdd/azuracast/shoutcast2:/var/azuracast/storage/shoutcast2'
+            - '/media/moo/bighdd/azuracast/stereo_tool:/var/azuracast/storage/stereo_tool'
+            - '/media/moo/bighdd/azuracast/rsas:/var/azuracast/storage/rsas'
+            - '/media/moo/bighdd/azuracast/geoip:/var/azuracast/storage/geoip'
+            - '/media/moo/bighdd/azuracast/sftpgo:/var/azuracast/storage/sftpgo'
+            - '/media/moo/bighdd/azuracast/acme:/var/azuracast/storage/acme'
+        restart: unless-stopped
+        ulimits:
+            nofile:
+                soft: 65536
+                hard: 65536
+        logging:
+            options:
+                max-size: 1m
+                max-file: '5'
+volumes:
+    db_data: {  }
+    acme: {  }
+    shoutcast2_install: {  }
+    stereo_tool_install: {  }
+    rsas_install: {  }
+    geolite_install: {  }
+    sftpgo_data: {  }
+    station_data: {  }
+    www_uploads: {  }
+    backups: {  }

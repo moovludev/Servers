@@ -15,6 +15,7 @@
 **/torrenting-stack/gluetun
 **/torrenting-stack/qbittorrent
 **/minecraft/puppy-server
+**/home-assistant/config
 
 # Databases
 **/postgres/
@@ -27,7 +28,7 @@
 # IDE / OS
 .idea/
 *.iml
-*.log
+*.log*
 *.swp
 .DS_Store
 Thumbs.db
@@ -35,3 +36,9 @@ Thumbs.db
 # Node / JS
 node_modules/
 pnpm-lock.yaml
+
+# Backups
+*.bak
+
+# Database files
+*.db

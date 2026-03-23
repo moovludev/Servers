@@ -67,6 +67,13 @@
         siteMonitor: http://192.168.20.30:8384
         server: local-docker
         container: syncthing
+    - homeassistant:
+        icon: home-assistant.png
+        description: A centralised home assistant
+        href: http://192.168.20.30:8123
+        siteMonitor: http://192.168.20.30:8123
+        server: local-docker
+        container: homeassistant
 
 - Public Services:
     - Immich:
@@ -123,6 +130,13 @@
             type: tailscale
             deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
             key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+    - Azuracast:
+        icon: azuracast.png
+        href: {{HOMEPAGE_VAR_AZURACAST_PUBLIC}}
+        description: Internet Radio
+        server: local-docker
+        container: azuracast
+        siteMonitor: {{HOMEPAGE_VAR_AZURACAST_PUBLIC}}
 
 - Game Servers:
     - Minecraft Vanilla:

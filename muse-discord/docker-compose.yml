@@ -4,8 +4,8 @@ services:
   muse:
     # image: ghcr.io/museofficial/muse:2.11.1
     # image: ghcr.io/museofficial/muse:pr-1256
-    # image: dovah/muse:latest
-    image: ghcr.io/museofficial/muse:pr-1284
+    image: dovah/muse:latest
+    # image: ghcr.io/museofficial/muse:pr-1284
     restart: always
     volumes:
       - ./data:/data
