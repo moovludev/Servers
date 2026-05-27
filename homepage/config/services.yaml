@@ -74,6 +74,13 @@
         siteMonitor: http://192.168.20.30:8123
         server: local-docker
         container: homeassistant
+    - Explo:
+        icon: explo.png
+        description: automatic listenbrainz downloader
+        href: http://192.168.20.30:7288
+        siteMonitor: http://192.168.20.30:7288
+        server: local-docker
+        container: explo
 
 - Public Services:
     - Immich:
@@ -137,6 +144,13 @@
         server: local-docker
         container: azuracast
         siteMonitor: {{HOMEPAGE_VAR_AZURACAST_PUBLIC}}
+    - Zipline:
+        icon: zipline.png
+        href: {{HOMEPAGE_VAR_ZIPLINE_PUBLIC}}
+        description: File upload and link shortener
+        server: local-docker
+        container: zipline-zipline-1
+        siteMonitor: {{HOMEPAGE_VAR_ZIPLINE_PUBLIC}}
 
 - Game Servers:
     - Minecraft Vanilla:

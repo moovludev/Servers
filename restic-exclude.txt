@@ -1,0 +1,86 @@
+# Azuracast
+/home/moo/Desktop/Servers/azuracast/**
+
+# Foundryvtt-11
+/home/moo/Desktop/Servers/foundryvtt-11/Backups/**
+/home/moo/Desktop/Servers/foundryvtt-11/container_cache/**
+/home/moo/Desktop/Servers/foundryvtt-11/Logs/**
+
+# Foundryvtt-12
+/home/moo/Desktop/Servers/foundryvtt-12/Backups/**
+/home/moo/Desktop/Servers/foundryvtt-12/container_cache/**
+/home/moo/Desktop/Servers/foundryvtt-12/Logs/**
+
+# Home Assistant
+/home/moo/Desktop/Servers/home-assistant/**
+!/home/moo/Desktop/Servers/home-assistant/config/**
+!/home/moo/Desktop/Servers/home-assistant/config/backups/**
+/home/moo/Desktop/Servers/home-assistant/home-assistant_v2.db*
+/home/moo/Desktop/Servers/home-assistant/home-assistant.log*
+
+# Homepage
+/home/moo/Desktop/Servers/homepage/config/logs/**
+
+# Immich
+/home/moo/Desktop/Servers/immich/postgres/**
+/media/moo/neptune/server-data/immich/library/encoded-video/**
+/media/moo/neptune/server-data/immich/library/thumbs/**
+
+# Jellyfin
+/home/moo/Desktop/Servers/jellyfin/backup/**
+/home/moo/Desktop/Servers/jellyfin/cache/**
+/home/moo/Desktop/Servers/jellyfin/config/metadata/**
+/home/moo/Desktop/Servers/jellyfin/config/log/**
+/home/moo/Desktop/Servers/jellyfin/config/transcodes/**
+
+# Minecraft
+/home/moo/Desktop/Servers/minecraft/backups/**
+/home/moo/Desktop/Servers/minecraft/puppy-server/.cache/**
+/home/moo/Desktop/Servers/minecraft/puppy-server/.fabric/**
+/home/moo/Desktop/Servers/minecraft/puppy-server/libraries/**
+/home/moo/Desktop/Servers/minecraft/puppy-server/logs/**
+/home/moo/Desktop/Servers/minecraft/puppy-server/versions/**
+
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/bluemap/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/cache/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/crash-reports/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/libraries/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/logs/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/plugins/.paper-remapped/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/plugins/AxiomPaper/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/plugins/CoreProtect/**
+/home/moo/Desktop/Servers/minecraft/vanilla-server/data/versions/**
+
+/home/moo/Desktop/Servers/Minecraft/backups/**
+
+/media/moo/neptune/server-data/minecraft/Persistent Server/.cache/**
+/media/moo/neptune/server-data/minecraft/Persistent Server/.fabric/**
+/media/moo/neptune/server-data/minecraft/Persistent Server/libraries/**
+/media/moo/neptune/server-data/minecraft/Persistent Server/logs/**
+/media/moo/neptune/server-data/minecraft/Persistent Server/versions/**
+
+# Muse
+/home/moo/Desktop/Servers/muse-discord/data/**
+
+# Szurubooru
+/home/moo/Desktop/Servers/szurubooru/**
+/media/moo/neptune/server-data/szurubooru/**
+
+# Torrenting Stack
+/home/moo/Desktop/Servers/torrenting-stack/firefox/downloads/**
+
+# Other data
+/media/moo/neptune/server-data/Dungeondraft Assets/**
+/media/moo/neptune/server-data/SMB Shared Drive/**
+
+# Zipline
+/media/moo/neptune/server-data/zipline/**
+
+# Common junk
+**/cache
+**/.cache
+**/logs
+**/log
+**/tmp
+**/*.log
+**/node_modules

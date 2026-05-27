@@ -9,6 +9,9 @@
   - Navidrome Local:
     - abbr: ND
       href: http://192.168.20.30:4533/
+  - Zipline Local:
+    - abbr: ZL
+      href: http://192.168.20.30:3005/
 
 - Tools:
   - Cloudflare:
