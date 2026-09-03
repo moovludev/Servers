@@ -10,12 +10,17 @@
 **/satisfactory-server/
 **/syncthing/config/
 **/deepbooru/
+**/stash
 **/tailscale-nginx/state
 **/torrenting-stack/firefox
 **/torrenting-stack/gluetun
 **/torrenting-stack/qbittorrent
 **/minecraft/puppy-server
 **/home-assistant/config
+**/backrest/config
+**/backrest/rclone
+**/backrest/tmp
+**/trek/uploads
 
 # Databases
 **/postgres/
@@ -39,6 +44,10 @@ pnpm-lock.yaml
 
 # Backups
 *.bak
+*.bak.*
 
 # Database files
 *.db
+
+# Python files
+**/__pycache__

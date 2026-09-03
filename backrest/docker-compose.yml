@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  backrest:
+    image: ghcr.io/garethgeorge/backrest:latest
+    container_name: backrest
+    hostname: backrest
+    volumes:
+      - ./data:/data
+      - ./config:/config
+      - ./cache:/cache
+      - ./tmp:/tmp
+      - ./rclone:/root/.config/rclone # Mount for rclone config (needed when using rclone remotes)
+      # Backup paths
+      - /media/moo/neptune/server-data:/userdata/server-data
+      - /home/moo/Desktop/Servers:/userdata/server-containers
+      #- /path/to/local/repos:/repos # Mount local repos (optional for remote storage)
+    environment:
+      - BACKREST_DATA=/data
+      - BACKREST_CONFIG=/config/config.json
+      - XDG_CACHE_HOME=/cache
+      - TMPDIR=/tmp
+      - TZ=Australia/Melbourne
+    ports:
+      - "9898:9898"
+    restart: unless-stopped

@@ -20,6 +20,9 @@ services:
       - type: bind
         source: '/media/moo/bighdd/jellyfin'
         target: /mediabighdd
+      - type: bind
+        source: '/media/moo/bighdd/qbittorrent-output'
+        target: /qbittorrent-output
     restart: 'unless-stopped'
     runtime: nvidia
     deploy:

@@ -56,8 +56,8 @@
         widget:
             type: qbittorrent
             url: http://192.168.20.30:8081
-            username: {{HOMEPAGE_VAR_NAVIDROME_USER}}
-            password: {{HOMEPAGE_VAR_NAVIDROME_PASSWORD}}
+            username: {{HOMEPAGE_VAR_QBITTORRENT_USER}}
+            password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
             enableLeechProgress: true # optional, defaults to false
             enableLeechSize: true # optional, defaults to false
     - syncthing:
@@ -76,11 +76,49 @@
         container: homeassistant
     - Explo:
         icon: explo.png
-        description: automatic listenbrainz downloader
+        description: Automatic listenbrainz downloader
         href: http://192.168.20.30:7288
         siteMonitor: http://192.168.20.30:7288
         server: local-docker
         container: explo
+    - Zigbee2MQTT:
+        icon: zigbee2mqtt.png
+        description: Zigbee to MQTT bridge
+        href: http://192.168.20.30:8085
+        siteMonitor: http://192.168.20.30:8085
+        server: local-docker
+        container: zigbee2mqtt
+    - Backrest:
+        icon: backrest.png
+        description: Restic backup wrapper
+        href: http://192.168.20.30:9898
+        siteMonitor: http://192.168.20.30:9898
+        server: local-docker
+        container: backrest
+        widget:
+          type: backrest
+          url: http://192.168.20.30:9898
+          username: {{HOMEPAGE_VAR_BACKREST_USER}}
+          password: {{HOMEPAGE_VAR_BACKREST_PASSWORD}}
+    - Seafile:
+        icon: seafile.png
+        description: File Server
+        href: http://192.168.20.30:8086
+        siteMonitor: http://192.168.20.30:8086
+        server: local-docker
+        container: seafile
+    - Cloudflared:
+        icon: cloudflared.png
+        description: Tunnel to cloudflare domain
+        server: local-docker
+        container: cloudflared
+    - Mindwtr:
+        icon: mindwtr.png
+        description: Tasks server
+        href: http://192.168.20.30:5173
+        siteMonitor: http://192.168.20.30:5173
+        server: local-docker
+        container: mindwtr-cloud
 
 - Public Services:
     - Immich:
@@ -132,7 +170,7 @@
         icon: tailscale.png
         description: Tailscale VPN
         server: local-docker
-        container: tailscale-nginx-1
+        container: tailscale-tailscale-nginx-1
         widget:
             type: tailscale
             deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
@@ -151,6 +189,20 @@
         server: local-docker
         container: zipline-zipline-1
         siteMonitor: {{HOMEPAGE_VAR_ZIPLINE_PUBLIC}}
+    - Fluxer:
+        icon: fluxer.png
+        href: {{HOMEPAGE_VAR_FLUXER_PUBLIC}}
+        description: Discord alternative
+        server: local-docker
+        container: fluxer-api-1
+        siteMonitor: {{HOMEPAGE_VAR_FLUXER_PUBLIC}}
+    - Trek:
+        icon: trek.png
+        href: {{HOMEPAGE_VAR_TREK_PUBLIC}}
+        description: Travel planner
+        server: local-docker
+        container: trek
+        siteMonitor: {{HOMEPAGE_VAR_TREK_PUBLIC}}
 
 - Game Servers:
     - Minecraft Vanilla:

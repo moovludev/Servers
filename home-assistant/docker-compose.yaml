@@ -1,3 +1,6 @@
+networks:
+  zigbee:
+
 services:
   homeassistant:
     container_name: homeassistant
@@ -11,3 +14,39 @@ services:
     network_mode: host
     environment:
       TZ: Australia/Melbourne
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: ghcr.io/koenkk/zigbee2mqtt
+    restart: unless-stopped
+    volumes:
+      - ./data/zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8085:8080
+    environment:
+      - TZ=Australia/Melbourne
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    group_add:
+      - dialout
+    user: 1000:1000
+    networks:
+      - zigbee
+
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+    volumes:
+      - ./data/mosquitto/config:/mosquitto/config
+      - ./data/mosquitto/data:/mosquitto/data
+      - ./data/mosquitto/log:/mosquitto/log
+    networks:
+      - zigbee

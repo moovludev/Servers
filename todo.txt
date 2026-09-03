@@ -1,3 +1,0 @@
-- Put Jellyfin behind nginx
-- Look into authentik
-- Make samba a docker container

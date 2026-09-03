@@ -2,9 +2,10 @@ version: '3.4'
 
 services:
   muse:
-    # image: ghcr.io/museofficial/muse:2.11.1
+    image: ghcr.io/museofficial/muse:latest
+    # image: ghcr.io/museofficial/muse:pr-1323
     # image: ghcr.io/museofficial/muse:pr-1256
-    image: dovah/muse:latest
+    # image: dovah/muse:latest
     # image: ghcr.io/museofficial/muse:pr-1284
     restart: always
     volumes:
