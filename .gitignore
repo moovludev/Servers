@@ -52,3 +52,6 @@ pnpm-lock.yaml
 
 # Python files
 **/__pycache__
+
+# Caddyfiles
+**/Caddyfile

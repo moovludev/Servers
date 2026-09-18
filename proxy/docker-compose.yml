@@ -1,0 +1,28 @@
+# This stack acts as a proxy between my containers and cloudflare tunnel.
+# Used to make containers accessible on the internet.
+
+services:
+  # Cloudflared - Cloudflare tunnel
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    networks:
+      - proxy
+
+  # Caddy - Reverse proxy
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./data/caddy/data:/data
+      - ./data/caddy/config:/config
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

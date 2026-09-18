@@ -1,5 +1,6 @@
 services:
   navidrome:
+    container_name: navidrome
     image: deluan/navidrome:latest
     user: 1000:1000 # should be owner of volumes
     ports:
@@ -8,6 +9,8 @@ services:
     volumes:
       - "./data:/data"
       - "/media/moo/neptune/server-data/syncthing/music:/music:ro"
+    networks:
+      - proxy
 
   explo:
       image: ghcr.io/lumepart/explo:latest
@@ -38,3 +41,7 @@ services:
         # Uncomment for testing (runs explo right after launcing the container)
         # - EXECUTE_ON_START=true # Whether to run explo when starting the container (useful for testing)
         #- START_FLAGS=--persist=false # if needed, set startup flags for testing
+
+networks:
+  proxy:
+    external: true

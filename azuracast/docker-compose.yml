@@ -32,6 +32,8 @@ services:
             options:
                 max-size: 1m
                 max-file: '5'
+        networks:
+            - proxy
 volumes:
     db_data: {  }
     acme: {  }
@@ -43,3 +45,7 @@ volumes:
     station_data: {  }
     www_uploads: {  }
     backups: {  }
+
+networks:
+  proxy:
+    external: true

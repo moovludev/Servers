@@ -21,3 +21,9 @@ services:
         # The following allow `docker attach minecraft` to work
         stdin_open: true
         tty: true
+        networks:
+            - proxy
+
+networks:
+  proxy:
+    external: true
