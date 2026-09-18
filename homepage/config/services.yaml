@@ -119,6 +119,28 @@
         siteMonitor: http://192.168.20.30:5173
         server: local-docker
         container: mindwtr-cloud
+    - Scrutiny:
+        icon: scrutiny.png
+        description: Drive S.M.A.R.T checks
+        href: http://192.168.20.30:8082
+        siteMonitor: http://192.168.20.30:8082
+        server: local-docker
+        container: scrutiny
+        widget:
+          type: scrutiny
+          url: http://192.168.20.30:8082
+    - diun:
+        icon: diun.png
+        description: Docker image notifications
+        server: local-docker
+        container: diun
+    - n8n:
+        icon: n8n.png
+        description: Workflow automation
+        href: http://192.168.20.30:5678
+        siteMonitor: http://192.168.20.30:5678
+        server: local-docker
+        container: n8n
 
 - Public Services:
     - Immich:
@@ -150,7 +172,7 @@
         href: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
         description: Music server
         server: local-docker
-        container: navidrome-navidrome-1
+        container: navidrome
         siteMonitor: {{HOMEPAGE_VAR_NAVIDROME_PUBLIC}}
         widget:
             widget:
@@ -187,7 +209,7 @@
         href: {{HOMEPAGE_VAR_ZIPLINE_PUBLIC}}
         description: File upload and link shortener
         server: local-docker
-        container: zipline-zipline-1
+        container: zipline
         siteMonitor: {{HOMEPAGE_VAR_ZIPLINE_PUBLIC}}
     - Fluxer:
         icon: fluxer.png

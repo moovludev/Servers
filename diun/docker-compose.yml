@@ -1,0 +1,25 @@
+services:
+  diun:
+    image: crazymax/diun:latest
+    container_name: diun
+    restart: unless-stopped
+
+    command: serve
+
+    environment:
+      TZ: Australia/Melbourne
+
+      # Check every 12 hours
+      DIUN_WATCH_SCHEDULE: "0 */12 * * *"
+      DIUN_WATCH_WORKERS: 20
+
+      # Automatically watch all Docker containers
+      DIUN_PROVIDERS_DOCKER: "true"
+      DIUN_PROVIDERS_DOCKER_WATCHBYDEFAULT: "true"
+
+      # Discord
+      DIUN_NOTIF_DISCORD_WEBHOOKURL: "${DIUN_DISCORD_WEBHOOK}"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data:/data

@@ -21,6 +21,7 @@
 **/backrest/rclone
 **/backrest/tmp
 **/trek/uploads
+**/scrutiny/influxdb
 
 # Databases
 **/postgres/
