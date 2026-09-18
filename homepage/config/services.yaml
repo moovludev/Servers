@@ -141,6 +141,11 @@
         siteMonitor: http://192.168.20.30:5678
         server: local-docker
         container: n8n
+    - crowdsec:
+        icon: crowdsec.png
+        description: IDS
+        server: local-docker
+        container: crowdsec
 
 - Public Services:
     - Immich:

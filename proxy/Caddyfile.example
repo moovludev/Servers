@@ -1,0 +1,19 @@
+{
+    servers {
+        trusted_proxies static [YOUR IP]/32
+        trusted_proxies_strict
+    }
+}
+
+(logging) {
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
+
+# Repeat this for however many services you need.
+http://[DOMAIN] {
+    import logging
+    reverse_proxy [CONTAINER NAME]:[PORT]
+}

@@ -9,7 +9,8 @@ services:
     restart: unless-stopped
     command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
     networks:
-      - proxy
+      proxy:
+        ipv4_address: 192.168.144.11
 
   # Caddy - Reverse proxy
   caddy:
@@ -20,6 +21,25 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data/caddy/data:/data
       - ./data/caddy/config:/config
+      - ./data/caddy/logs:/var/log/caddy
+    networks:
+      - proxy
+
+  # Crowdsec - IDS
+  crowdsec:
+    image: crowdsecurity/crowdsec
+    container_name: crowdsec
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8089:8080
+    environment:
+      COLLECTIONS: "crowdsecurity/caddy"
+      GID: "${GID-1000}"
+    volumes:
+      - ./data/crowdsec/acquis.d:/etc/crowdsec/acquis.d
+      - ./data/crowdsec/data:/var/lib/crowdsec/data
+      - ./data/crowdsec/config:/etc/crowdsec
+      - ./data/caddy/logs:/var/log/caddy:ro
     networks:
       - proxy
 
