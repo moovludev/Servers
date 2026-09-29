@@ -146,6 +146,13 @@
         description: IDS
         server: local-docker
         container: crowdsec
+    - music-assistant:
+        icon: music_assistant.png
+        description: Music library manager
+        container: music-assistant-server
+        server: local-docker
+        href: http://192.168.20.30:8095
+        siteMonitor: http://192.168.20.30:8095
 
 - Public Services:
     - Immich:
