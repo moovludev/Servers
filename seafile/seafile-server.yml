@@ -44,6 +44,7 @@ services:
     restart: unless-stopped
     ports:
       - "8086:80"
+      - "8090:8090"
     volumes:
       - ${SEAFILE_VOLUME:-/opt/seafile-data}:/shared
     environment:
